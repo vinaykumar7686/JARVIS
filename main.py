@@ -85,7 +85,7 @@ if __name__ == "__main__":
 
     while True:
 
-        query=input("How can I help sir?").lower()
+        query=input("How can I help sir?\n").lower()
         qry=query.split(" ")
 
         if qry[0]=='open' and qry[1] in websites:
@@ -106,6 +106,10 @@ if __name__ == "__main__":
         elif 'launch' in query:
             query=query.replace('launch','')
             launch(query)
+
+        elif query in ['create workspace', 'launch workspace'] :
+            from work_space import create_env
+            create_env()
         
         #SEARCH
         elif query=='search':
