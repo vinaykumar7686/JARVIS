@@ -13,6 +13,9 @@ def launchx(*args):
     pag.hotkey('enter')
     pag.sleep(5)
 
+    # Maximise window
+    pag.hotkey('win', 'up')
+
     if app == 'chrome':
         # for case if no website is passed
         args.append(['google'])
@@ -24,6 +27,15 @@ def launchx(*args):
             time.sleep(1)
             if i<(len(args[1])-1):
                 pag.hotkey('ctrl','t')
+    
+    if app in ['cmd', 'dos']:
+        # for case when no command is passed
+        args.append('')
+
+        for command in args[1]:
+            pag.typewrite(command)
+            pag.hotkey('enter')
+            time.sleep(1)
 
 
 
