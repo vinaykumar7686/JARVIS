@@ -1,6 +1,7 @@
 import pyttsx3, pyautogui as pag
 import time, datetime
 import os,sys
+from notify import notifyx
 
 # Initialising Engine
 engine = pyttsx3.init("sapi5")
@@ -46,8 +47,10 @@ def wishMe():
     else:
         printNspeak("Good Night Sir!")
     
-    print("Sorry sir, My ability of taking voice commands is under development, until then please type the commands.")
-
+    notifyx(title= 'JARVIS',
+    message= "Sorry sir, My ability of taking voice commands is under development, until then please type the commands.",
+    icon= "src\chatbot.ico",
+    time = 5)
 
 
 def launch(name):
@@ -102,6 +105,10 @@ if __name__ == "__main__":
             time.sleep(5)
             pag.typewrite(query)
             pag.hotkey('enter')
+            notifyx(title='JARVIS',
+             message='Search Results are ready.',
+              icon= "src\chatbot.ico",
+               time = 4)
 
         elif 'launch' in query:
             query=query.replace('launch','')
@@ -110,6 +117,11 @@ if __name__ == "__main__":
         elif query in ['create workspace', 'launch workspace'] :
             from work_space import create_env
             create_env()
+            notifyx(title='JARVIS',
+             message="Your workspace is ready. Let's get onto work.",
+              icon= "src\chatbot.ico",
+               time = 4)
+            
         
         #SEARCH
         elif query=='search':
