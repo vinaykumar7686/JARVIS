@@ -82,7 +82,8 @@ if __name__ == "__main__":
         'leetcode':'www.leetcode.com',
         'instagram':'www.instagram.com',
         'geeksforgeeks':'www.geeksforgeeks.org',
-        'wikipedia':'www.wikipedia.org'
+        'wikipedia':'www.wikipedia.org',
+        'github': 'www.github.com'
         }
     
 

@@ -20,10 +20,15 @@ def create_env():
     pag.hotkey('win', 'ctrl', 'right')
     launchx('groove')
     pag.hotkey('space')
+    pag.hotkey('win', 'down')
+    pag.hotkey('win', 'down')
+
+    launchx('notes.txt')
 
     # Moveback to Desktop 1
     time.sleep(2)
     for _ in range(4):
         pag.hotkey('win', 'ctrl', 'left')
 
-create_env()
+if __name__ == "__main__":
+    create_env()
