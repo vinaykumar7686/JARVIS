@@ -114,11 +114,11 @@ if __name__ == "__main__":
             query=query.replace('launch','')
             launch(query)
 
-        elif query in ['create workspace', 'launch workspace'] :
+        elif query in ['create workspace environment', 'workspace environment'] :
             from work_space import create_env
             create_env()
             notifyx(title='JARVIS',
-             message="Your workspace is ready. Let's get onto work.",
+             message="Your workspace environment is ready. Let's get onto the work.",
               icon= "src\chatbot.ico",
                time = 4)
             
