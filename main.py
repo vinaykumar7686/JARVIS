@@ -48,10 +48,7 @@ def wishMe():
     else:
         printNspeak("Good Night Sir!")
     
-    notifyx(title= 'JARVIS',
-    message= "Sorry sir, My ability of taking voice commands is under development, until then please type the commands.",
-    icon= "src\chatbot.ico",
-    time = 5)
+    notifyx(message= "Sorry sir, My ability of taking voice commands is under development, until then please type the commands.")
 
 def search(txt):
     pag.hotkey("win")
@@ -87,10 +84,7 @@ if __name__ == "__main__":
             query=query.replace('search', '')
             launchx('chrome', [query])
 
-            notifyx(title='JARVIS',
-             message='Search Results are ready.',
-              icon= "src\chatbot.ico",
-               time = 4)
+            notifyx(message='Search Results are ready.', time = 4)
 
         elif 'launch' in query:
             query=query.replace('launch','')
@@ -99,10 +93,7 @@ if __name__ == "__main__":
         elif query in ['create workspace environment', 'workspace environment', 'setup workspace environment', ] :
             from work_space import create_env
             create_env()
-            notifyx(title='JARVIS',
-             message="Your workspace environment is ready. Let's get onto the work.",
-              icon= "src\chatbot.ico",
-               time = 4)
+            notifyx(message="Your workspace environment is ready. Let's get onto the work.", time = 4)
             
         
         #SEARCH
@@ -117,13 +108,11 @@ if __name__ == "__main__":
         #TIME AND SCHEDULES
 
         elif query in ["what's the time?",'what is the time?','current time','time']:
-            notifyx(title='JARVIS',
-             message=f'The time is {time.strftime("%I:%M")}',
-              icon= "src\chatbot.ico",
-               time = 4)
+            notifyx(message=f'The time is {time.strftime("%I:%M")}', time = 4)
             printNspeak(f'The time is {time.strftime("%I:%M")}')
 
         elif query in["what's the date?",'what is the date?',"today's date",'date']:
+            notifyx(message=f'Today is {time.strftime("%d")}', time = 4)
             printNspeak(f'Today is {time.strftime("%d")}')
 
         #ASSISSTANT CONTROL
