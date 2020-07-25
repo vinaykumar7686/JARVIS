@@ -2,6 +2,7 @@ import pyttsx3, pyautogui as pag
 import time, datetime
 import os,sys
 from notify import notifyx
+from launch import launchx
 
 # Initialising Engine
 engine = pyttsx3.init("sapi5")
@@ -52,24 +53,10 @@ def wishMe():
     icon= "src\chatbot.ico",
     time = 5)
 
-
-def launch(name):
-    
-    pag.hotkey("win")
-    time.sleep(2)
-    pag.typewrite(name,interval=0.2)
-    time.sleep(1)
-    pag.hotkey("enter")
-    time.sleep(2)
-    pag.hotkey("win","up")
-
-
 def search(txt):
     pag.hotkey("win")
     time.sleep(1)
     pag.typewrite(txt, interval=0.2)
-
-
 
 if __name__ == "__main__":
     
@@ -83,9 +70,9 @@ if __name__ == "__main__":
         'instagram':'www.instagram.com',
         'geeksforgeeks':'www.geeksforgeeks.org',
         'wikipedia':'www.wikipedia.org',
-        'github': 'www.github.com'
+        'github': 'www.github.com',
+        'linkedin' : 'www.linkedin.com'
         }
-    
 
     while True:
 
@@ -93,19 +80,13 @@ if __name__ == "__main__":
         qry=query.split(" ")
 
         if qry[0]=='open' and qry[1] in websites:
-                launch('chrome')
-                time.sleep(5)
-                pag.typewrite(websites[qry[1]])
-                pag.hotkey('enter')
+            launchx('chrome', [websites[qry[1]]])
 
         elif 'on google' in query and 'search' in query:
             query=query.replace('on google', '')
             query=query.replace('search', '')
-            
-            launch('chrome')
-            time.sleep(5)
-            pag.typewrite(query)
-            pag.hotkey('enter')
+            launchx('chrome', [query])
+
             notifyx(title='JARVIS',
              message='Search Results are ready.',
               icon= "src\chatbot.ico",
@@ -113,9 +94,9 @@ if __name__ == "__main__":
 
         elif 'launch' in query:
             query=query.replace('launch','')
-            launch(query)
+            launchx(query)
 
-        elif query in ['create workspace environment', 'workspace environment'] :
+        elif query in ['create workspace environment', 'workspace environment', 'setup workspace environment', ] :
             from work_space import create_env
             create_env()
             notifyx(title='JARVIS',
@@ -134,7 +115,12 @@ if __name__ == "__main__":
             search(query)
         
         #TIME AND SCHEDULES
+
         elif query in ["what's the time?",'what is the time?','current time','time']:
+            notifyx(title='JARVIS',
+             message=f'The time is {time.strftime("%I:%M")}',
+              icon= "src\chatbot.ico",
+               time = 4)
             printNspeak(f'The time is {time.strftime("%I:%M")}')
 
         elif query in["what's the date?",'what is the date?',"today's date",'date']:
