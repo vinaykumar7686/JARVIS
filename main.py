@@ -92,9 +92,7 @@ if __name__ == "__main__":
 
         elif query in ['create workspace environment', 'workspace environment', 'setup workspace environment', ] :
             from work_space import create_env
-            create_env()
-            notifyx(message="Your workspace environment is ready. Let's get onto the work.", time = 4)
-            
+            create_env()            
         
         #SEARCH
         elif query=='search':

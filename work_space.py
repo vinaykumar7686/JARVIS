@@ -1,7 +1,10 @@
 import pyautogui as pag, time
 from launch import launchx
+from notify import notifyx
 
 def create_env():
+    notifyx(message="Sir, you can get a glass of water, till then I will make sure that your setup is ready for use." , time = 8)
+
     for _ in range(4):
         pag.hotkey('win', 'ctrl', 'left')
     
@@ -29,6 +32,8 @@ def create_env():
     time.sleep(2)
     for _ in range(4):
         pag.hotkey('win', 'ctrl', 'left')
+
+    notifyx(message="Your workspace environment is ready. Let's get onto the work.", time = 4)
 
 if __name__ == "__main__":
     create_env()
