@@ -42,10 +42,9 @@ def evaluate(exp):
     '''
     try:
         exp = process(list(exp))
-        print(f"Processed Expression: {exp}")
-        return eval(exp)
+        return f'{exp} gives {str(eval(exp))}'
     except Exception as e:
-        return "Error Encountered : {}".format(e)
+        return f'While evaluating " {exp} " {e} was encountered.'
 
 if __name__ == "__main__":
     print(evaluate(input()))
