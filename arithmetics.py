@@ -11,6 +11,12 @@ def convert(exp):
             else:
                 res.append(sym)
                 point+=1
+        elif sym.isalpha():
+            if exp[i-1].isalpha():
+                res[point-1] = res[point-1]+sym
+            else:
+                res.append(sym)
+                point+=1
         else:
             point+=1
             res.append(sym)
