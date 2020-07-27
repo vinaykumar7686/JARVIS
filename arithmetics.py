@@ -5,7 +5,7 @@ def isPartialFloat(s):
     except Exception:
         return False
 
-def convert(exp):
+def process(exp):
     exp.append('$')
     point = 0
     res = []
@@ -32,7 +32,20 @@ def convert(exp):
         else:
             point+=1
             res.append(sym)
-    return res[:point-1]
+    return "".join(res[:point-1])
         
-print(convert(list(input("Enter expression: "))))
 
+def evaluate(exp):
+    '''
+    Function to return evaluated result
+    Input: unprocessed valid expression
+    '''
+    try:
+        exp = process(list(exp))
+        print(f"Processed Expression: {exp}")
+        return eval(exp)
+    except Exception as e:
+        return "Error Encountered : {}".format(e)
+
+if __name__ == "__main__":
+    print(evaluate(input()))
