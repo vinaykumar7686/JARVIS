@@ -76,6 +76,7 @@ if __name__ == "__main__":
         query=input("How can I help sir?\n").lower()
         qry=query.split(" ")
 
+        # Launch Control
         if qry[0]=='open' and qry[1] in websites:
             launchx('chrome', [websites[qry[1]]])
 
@@ -103,6 +104,12 @@ if __name__ == "__main__":
             query=query.replace('search',"")
             search(query)
         
+        # Calculations
+        elif qry[0] in ['evaluate', 'calculate'] :
+            from arithmetics import evaluate
+            print(evaluate("".join(qry[1:])))
+            
+
         #TIME AND SCHEDULES
 
         elif query in ["what's the time?",'what is the time?','current time','time']:
