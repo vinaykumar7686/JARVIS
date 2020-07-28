@@ -1,6 +1,26 @@
 import pyautogui as pag, time
 
-def launchx(*args):
+def switch_desktop(desktop):
+    '''
+    Assumption: Maximum desktops currently active  =  4
+    '''
+    print('Switching')
+    for _ in range(4):
+        pag.hotkey('win', 'ctrl', 'left')
+    
+    for _ in range(desktop-1):
+        pag.hotkey('win', 'ctrl', 'right')
+
+def launchx(*args, desktop = 0):
+    '''
+    Method to launch application or local files by searching fo them in windows search.
+    Arguments:
+    application and commands/websites if any
+    Desktop: Desktop Count in which application is to be launched.(Assumption: Max Active desktop = 4)
+    '''
+    if not desktop == 0:
+        switch_desktop(desktop)
+    
     args = list(args)
     app = args[0]
 
@@ -14,6 +34,7 @@ def launchx(*args):
     pag.sleep(5)
 
     # Maximise window
+    pag.hotkey('win', 'up')
     pag.hotkey('win', 'up')
 
     if app == 'chrome':
@@ -36,9 +57,6 @@ def launchx(*args):
             pag.typewrite(command)
             pag.hotkey('enter')
             time.sleep(1)
-
-
-
-
-
-
+        
+if __name__ == "__main__":
+    launchx('chrome', desktop=5)
