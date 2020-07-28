@@ -4,7 +4,6 @@ def switch_desktop(desktop):
     '''
     Assumption: Maximum desktops currently active  =  4
     '''
-    print('Switching')
     for _ in range(4):
         pag.hotkey('win', 'ctrl', 'left')
     
@@ -59,4 +58,4 @@ def launchx(*args, desktop = 0):
             time.sleep(1)
         
 if __name__ == "__main__":
-    launchx('chrome', desktop=5)
+    launchx('chrome',['geeksforgeeks', 'github'], desktop=2)

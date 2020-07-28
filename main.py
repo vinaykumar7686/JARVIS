@@ -88,8 +88,14 @@ if __name__ == "__main__":
             notifyx(message='Search Results are ready.', time = 4)
 
         elif 'launch' in query:
-            query=query.replace('launch','')
-            launchx(query)
+            if 'in desktop' in query:
+                try:
+                    launchx(qry[(qry.index('launch')+1)],desktop = int(qry[(qry.index('desktop')+1)]))
+                except:
+                    launchx((qry.index('launch')+1))
+            else:
+                query=query.replace('launch','')
+                launchx(query)
 
         elif query in ['create workspace environment', 'workspace environment', 'setup workspace environment', ] :
             from work_space import create_env
